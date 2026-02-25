@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinic Financial Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <main class="app-shell">
+      <header class="hero glass-panel">
+        <p class="eyebrow">Clinic Operations</p>
+        <h1>Financial Graph & Ledger</h1>
+        <p class="subtitle">
+          Track treatment income and operational expenses with a live balance graph.
+        </p>
+      </header>
+
+      <section class="grid-layout">
+        <article class="glass-panel card chart-card">
+          <div class="card-header">
+            <h2>Balance Trend</h2>
+            <span id="balance-pill" class="status-pill">Net: $0</span>
+          </div>
+          <canvas id="financeChart" aria-label="Income and expense graph" role="img"></canvas>
+        </article>
+
+        <article class="glass-panel card form-card">
+          <div class="card-header">
+            <h2>Income Logger</h2>
+          </div>
+          <form id="income-form" class="data-form">
+            <label>
+              Cost Earned ($)
+              <input type="number" id="income-amount" min="0" step="0.01" required />
+            </label>
+            <label>
+              Treatment Specification
+              <input
+                type="text"
+                id="income-treatment"
+                maxlength="90"
+                placeholder="e.g. Root canal + X-ray"
+                required
+              />
+            </label>
+            <button type="submit">Add Income</button>
+          </form>
+          <ul id="income-list" class="entry-list"></ul>
+        </article>
+
+        <article class="glass-panel card form-card">
+          <div class="card-header">
+            <h2>Expense Logger</h2>
+          </div>
+          <form id="expense-form" class="data-form">
+            <label>
+              Expense Category
+              <select id="expense-category" required>
+                <option value="Electricity">Electricity</option>
+                <option value="Materials">Materials</option>
+                <option value="Workers">Workers</option>
+                <option value="Rent">Rent</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label>
+              Cost ($)
+              <input type="number" id="expense-amount" min="0" step="0.01" required />
+            </label>
+            <button type="submit">Add Expense</button>
+          </form>
+          <ul id="expense-list" class="entry-list"></ul>
+        </article>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
